@@ -1,4 +1,3 @@
-/* إعادة ضبط الإعدادات الافتراضية للمتصفح */
 * {
     margin: 0;
     padding: 0;
@@ -6,163 +5,187 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* خلفية النظام - لون داكن مع تدرج لوني يعطي جمالية للزجاج */
 body {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: #ffffff;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* تصميم الحاوية لتكون شبكة (Grid) تفصل القائمة الجانبية عن المحتوى */
-.app-container {
-    display: flex;
     height: 100vh;
-    padding: 20px;
-    gap: 20px;
+    overflow: hidden;
 }
 
-/* فئة التصميم الزجاجي (Glass UI) - سنستخدمها في كل مكان */
-.glass-panel {
-    background: rgba(255, 255, 255, 0.05); /* خلفية شبه شفافة */
-    backdrop-filter: blur(10px); /* تأثير ضبابي للزجاج */
-    -webkit-backdrop-filter: blur(10px); /* لدعم متصفحات سفاري */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* حد خفيف جداً */
-    border-radius: 15px; /* حواف دائرية */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* ظل يعطي عمق للتصميم */
-}
-
-/* --- القائمة الجانبية --- */
-.sidebar {
-    width: 250px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-.logo {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.2rem;
-    color: #4CAF50; /* لون مميز للشعار */
-}
-
-.nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.nav-btn {
-    background: transparent;
-    border: none;
-    color: #ccc;
-    padding: 12px 15px;
-    text-align: right;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.nav-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-}
-
-/* تصميم الزر النشط (التبويب المفتوح حالياً) */
-.nav-btn.active {
-    background: rgba(76, 175, 80, 0.3);
-    color: #fff;
-    border-right: 4px solid #4CAF50;
-}
-
-/* --- المحتوى الرئيسي --- */
-.main-content {
-    flex: 1;
-    overflow-y: auto;
+.app-container {
+    height: 100%;
     position: relative;
 }
 
-/* إخفاء جميع التبويبات افتراضياً */
-.tab-content {
-    display: none;
-    padding: 30px;
-    animation: fadeIn 0.4s ease-in-out; /* حركة ظهور سلسة */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* إظهار التبويب النشط فقط */
+.main-content {
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.4s ease-in-out;
+    margin-bottom: 20px;
+}
+
 .tab-content.active {
     display: block;
 }
 
-/* حركة الظهور (Animation) */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- تصميم لوحة التحكم (Dashboard) --- */
-.stats-grid {
+/* النماذج (Forms) */
+.form-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    gap: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+.form-buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-add { background: #4CAF50; }
+.btn-edit { background: #2196F3; }
+.btn-delete { background: #f44336; }
+.btn-clear { background: #ff9800; }
+.btn-print, .btn-export { background: #9c27b0; }
+
+/* الإحصائيات والجداول */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
 }
 
 .stat-card {
-    padding: 20px;
+    padding: 15px;
     text-align: center;
 }
 
-.stat-card h3 {
-    font-size: 1.1rem;
-    color: #aaa;
+.stat-card h3 { font-size: 1rem; color: #aaa; }
+.stat-card p { font-size: 1.5rem; color: #4CAF50; font-weight: bold; margin-top: 10px; }
+
+.section-title {
+    margin-top: 25px;
     margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
 }
 
-.stat-card p {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #4CAF50;
+.chart-area {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
 }
 
-/* --- تصميم الجداول --- */
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .data-table th, .data-table td {
-    padding: 12px;
+    padding: 10px;
     text-align: right;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.data-table th {
-    background: rgba(0, 0, 0, 0.2);
+.data-table th { background: rgba(0, 0, 0, 0.3); }
+
+/* شريط التبويبات السفلي */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0 10px;
+    background: rgba(15, 32, 39, 0.9);
+    border-radius: 15px 15px 0 0;
+    border-bottom: none;
+    z-index: 1000;
 }
 
-.action-btn {
-    padding: 10px 15px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
+.bottom-nav::-webkit-scrollbar {
+    height: 5px;
 }
 
-/* تجاوب الشاشة للموبايل */
-@media (max-width: 768px) {
-    .app-container {
-        flex-direction: column;
-    }
-    .sidebar {
-        width: 100%;
-        height: auto;
-    }
+.bottom-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.nav-btn {
+    background: transparent;
+    color: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    height: 100%;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.nav-btn i { font-size: 1.2rem; }
+.nav-btn span { font-size: 0.8rem; }
+
+.nav-btn:hover, .nav-btn.active {
+    color: #4CAF50;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-btn.active {
+    border-bottom: 3px solid #4CAF50;
+    border-radius: 0;
 }
