@@ -10,96 +10,326 @@
 <body>
 
     <div class="app-container">
-
-        <aside class="sidebar glass-panel">
-            <div class="logo">
-                <h2><i class="fas fa-truck-moving"></i> شركة النقل</h2>
-            </div>
-            
-            <nav class="nav-menu">
-                <button class="nav-btn active" onclick="openTab(event, 'dashboard')"><i class="fas fa-home"></i> الرئيسية</button>
-                <button class="nav-btn" onclick="openTab(event, 'trucks')"><i class="fas fa-truck"></i> إدارة الشاحنات</button>
-                <button class="nav-btn" onclick="openTab(event, 'drivers')"><i class="fas fa-id-card"></i> إدارة السائقين</button>
-                <button class="nav-btn" onclick="openTab(event, 'trips')"><i class="fas fa-route"></i> إدارة الرحلات</button>
-                <button class="nav-btn" onclick="openTab(event, 'materials')"><i class="fas fa-cubes"></i> المواد الإنشائية</button>
-                <button class="nav-btn" onclick="openTab(event, 'fuel')"><i class="fas fa-gas-pump"></i> إدارة الكاز</button>
-                <button class="nav-btn" onclick="openTab(event, 'maintenance')"><i class="fas fa-tools"></i> الصيانة</button>
-                <button class="nav-btn" onclick="openTab(event, 'washing')"><i class="fas fa-tint"></i> الغسل والإدامة</button>
-                <button class="nav-btn" onclick="openTab(event, 'loading')"><i class="fas fa-industry"></i> معامل التحميل</button>
-                <button class="nav-btn" onclick="openTab(event, 'unloading')"><i class="fas fa-map-marker-alt"></i> معامل التفريغ</button>
-                <button class="nav-btn" onclick="openTab(event, 'scaffolds')"><i class="fas fa-layer-group"></i> سكلات المواد</button>
-                <button class="nav-btn" onclick="openTab(event, 'reports')"><i class="fas fa-chart-line"></i> التقارير</button>
-                <button class="nav-btn" onclick="openTab(event, 'settings')"><i class="fas fa-cog"></i> الإعدادات</button>
-            </nav>
-        </aside>
-
         <main class="main-content">
             
             <section id="dashboard" class="tab-content active glass-panel">
-                <h2>لوحة التحكم (Dashboard)</h2>
+                <h2>الصفحة الرئيسية</h2>
                 <div class="stats-grid">
-                    <div class="stat-card glass-panel">
-                        <h3>عدد الشاحنات</h3>
-                        <p>25</p>
-                    </div>
-                    <div class="stat-card glass-panel">
-                        <h3>عدد السائقين</h3>
-                        <p>30</p>
-                    </div>
-                    <div class="stat-card glass-panel">
-                        <h3>رحلات اليوم</h3>
-                        <p>12</p>
-                    </div>
-                    <div class="stat-card glass-panel">
-                        <h3>الإيرادات اليوم</h3>
-                        <p>5,000 $</p>
-                    </div>
+                    <div class="stat-card glass-panel"><h3>عدد الشاحنات</h3><p>0</p></div>
+                    <div class="stat-card glass-panel"><h3>عدد السائقين</h3><p>0</p></div>
+                    <div class="stat-card glass-panel"><h3>عدد الرحلات اليوم</h3><p>0</p></div>
+                    <div class="stat-card glass-panel"><h3>إجمالي المصاريف</h3><p>0</p></div>
+                    <div class="stat-card glass-panel"><h3>إجمالي الأرباح</h3><p>0</p></div>
+                    <div class="stat-card glass-panel"><h3>كمية الوقود المصروفة</h3><p>0</p></div>
                 </div>
-                <div class="chart-area glass-panel" style="margin-top: 20px; height: 200px; display: flex; align-items: center; justify-content: center;">
-                    <p>مساحة مخصصة للرسم البياني (المصاريف والأرباح)</p>
+                
+                <h3 class="section-title">آخر الرحلات</h3>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>رقم الرحلة</th><th>اسم السائق</th><th>الشاحنة</th>
+                            <th>مكان التحميل</th><th>مكان التفريغ</th><th>حالة الرحلة</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <h3 class="section-title">رسم بياني للمصاريف والأرباح</h3>
+                <div class="chart-area glass-panel">
+                    <p>مساحة الرسم البياني</p>
                 </div>
             </section>
 
             <section id="trucks" class="tab-content glass-panel">
                 <h2>إدارة الشاحنات</h2>
-                <button class="action-btn glass-panel"><i class="fas fa-plus"></i> إضافة شاحنة جديدة</button>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="رقم الشاحنة">
+                    <input type="text" placeholder="نوع الشاحنة">
+                    <input type="text" placeholder="الموديل">
+                    <input type="text" placeholder="سنة الصنع">
+                    <input type="text" placeholder="رقم اللوحة">
+                    <select><option>تعمل</option><option>صيانة</option></select>
+                    <input type="text" placeholder="اسم السائق المسؤول">
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة شاحنة</button>
+                        <button class="btn-edit">تحديث البيانات</button>
+                        <button class="btn-delete">حذف الشاحنة</button>
+                        <button class="btn-clear" onclick="clearForm(this)">مسح الحقول</button>
+                    </div>
+                </div>
                 <table class="data-table glass-panel">
                     <thead>
                         <tr>
-                            <th>رقم الشاحنة</th>
-                            <th>النوع</th>
-                            <th>الموديل</th>
-                            <th>السائق</th>
-                            <th>الحالة</th>
-                            <th>الإجراءات</th>
+                            <th>رقم الشاحنة</th><th>النوع</th><th>الموديل</th>
+                            <th>اللوحة</th><th>السائق</th><th>الحالة</th><th>إجراءات</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>TRK-101</td>
-                            <td>مرسيدس أكتروس</td>
-                            <td>2021</td>
-                            <td>أحمد علي</td>
-                            <td><span style="color: #4CAF50;">تعمل</span></td>
-                            <td><button>تعديل</button> <button>حذف</button></td>
-                        </tr>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </section>
 
-            <section id="drivers" class="tab-content glass-panel"><h2>إدارة السائقين</h2><p>هنا سيتم وضع جدول السائقين ومعلوماتهم.</p></section>
-            <section id="trips" class="tab-content glass-panel"><h2>إدارة الرحلات (النقل)</h2><p>هنا سيتم إدارة جميع تفاصيل الرحلات.</p></section>
-            <section id="materials" class="tab-content glass-panel"><h2>شراء المواد الإنشائية</h2><p>هنا سيتم تسجيل الرمل، الحصى، السمنت، إلخ.</p></section>
-            <section id="fuel" class="tab-content glass-panel"><h2>إدارة الكاز (الوقود)</h2><p>هنا سيتم متابعة استهلاك الوقود والمحطات.</p></section>
-            <section id="maintenance" class="tab-content glass-panel"><h2>الصيانة</h2><p>هنا سيتم تسجيل أعطال الشاحنات وورش الصيانة.</p></section>
-            <section id="washing" class="tab-content glass-panel"><h2>الغسل والإدامة</h2><p>هنا سيتم إدارة خدمات غسل وتشحيم الشاحنات.</p></section>
-            <section id="loading" class="tab-content glass-panel"><h2>معامل التحميل</h2><p>هنا سيتم إضافة معامل السمنت، الطابوق، وغيرها.</p></section>
-            <section id="unloading" class="tab-content glass-panel"><h2>معامل التفريغ</h2><p>هنا سيتم تسجيل مواقع تفريغ المواد.</p></section>
-            <section id="scaffolds" class="tab-content glass-panel"><h2>سكلات المواد الإنشائية</h2><p>هنا سيتم إدارة السكلات ومواقعها.</p></section>
-            <section id="reports" class="tab-content glass-panel"><h2>التقارير</h2><p>هنا سيتم عرض وتصدير تقارير الأرباح والمصاريف والوقود.</p></section>
-            <section id="settings" class="tab-content glass-panel"><h2>الإعدادات</h2><p>هنا سيتم وضع إعدادات النظام والمستخدمين والنسخ الاحتياطي.</p></section>
+            <section id="drivers" class="tab-content glass-panel">
+                <h2>إدارة السائقين</h2>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="اسم السائق">
+                    <input type="text" placeholder="رقم الهاتف">
+                    <input type="text" placeholder="رقم الهوية">
+                    <input type="text" placeholder="رقم إجازة السوق">
+                    <input type="date" placeholder="تاريخ انتهاء الإجازة">
+                    <input type="text" placeholder="الراتب الشهري">
+                    <input type="text" placeholder="ملاحظات">
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة</button>
+                        <button class="btn-edit">تعديل</button>
+                        <button class="btn-delete">حذف</button>
+                        <button class="btn-clear" onclick="clearForm(this)">تفريغ الحقول</button>
+                    </div>
+                </div>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th><th>الهاتف</th><th>رقم الإجازة</th>
+                            <th>تاريخ الانتهاء</th><th>الراتب</th><th>إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="trips" class="tab-content glass-panel">
+                <h2>إدارة الرحلات</h2>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="رقم الرحلة">
+                    <input type="text" placeholder="اختيار الشاحنة">
+                    <input type="text" placeholder="اختيار السائق">
+                    <input type="text" placeholder="مكان التحميل">
+                    <input type="text" placeholder="مكان التفريغ">
+                    <input type="text" placeholder="نوع الحمولة">
+                    <input type="text" placeholder="وزن الحمولة">
+                    <input type="date" placeholder="تاريخ الرحلة">
+                    <input type="text" placeholder="أجرة النقل">
+                    <select><option>قيد التنفيذ</option><option>مكتملة</option></select>
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة رحلة</button>
+                        <button class="btn-edit">تعديل</button>
+                        <button class="btn-delete">حذف</button>
+                        <button class="btn-print">طباعة</button>
+                    </div>
+                </div>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>رقم الرحلة</th><th>الشاحنة</th><th>السائق</th>
+                            <th>التحميل</th><th>التفريغ</th><th>الحمولة</th>
+                            <th>السعر</th><th>الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="materials" class="tab-content glass-panel">
+                <h2>شراء المواد الإنشائية</h2>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="اسم المادة">
+                    <input type="text" placeholder="نوع المادة">
+                    <input type="text" placeholder="الكمية">
+                    <input type="text" placeholder="السعر">
+                    <input type="text" placeholder="المورد">
+                    <input type="date" placeholder="تاريخ الشراء">
+                    <input type="text" placeholder="رقم الفاتورة">
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة</button>
+                        <button class="btn-edit">تعديل</button>
+                        <button class="btn-delete">حذف</button>
+                    </div>
+                </div>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>المادة</th><th>الكمية</th><th>السعر</th>
+                            <th>المورد</th><th>التاريخ</th><th>الإجمالي</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="fuel" class="tab-content glass-panel">
+                <h2>إدارة الوقود (الكاز)</h2>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="الشاحنة">
+                    <input type="text" placeholder="السائق">
+                    <input type="text" placeholder="كمية الكاز">
+                    <input type="text" placeholder="السعر">
+                    <input type="text" placeholder="اسم محطة الوقود">
+                    <input type="date" placeholder="التاريخ">
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة</button>
+                        <button class="btn-edit">تعديل</button>
+                        <button class="btn-delete">حذف</button>
+                    </div>
+                </div>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>الشاحنة</th><th>السائق</th><th>الكمية</th>
+                            <th>السعر</th><th>التاريخ</th><th>الإجمالي</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="maintenance" class="tab-content glass-panel">
+                <h2>الصيانة</h2>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="رقم الشاحنة">
+                    <input type="text" placeholder="نوع الصيانة">
+                    <input type="text" placeholder="قطع الغيار">
+                    <input type="text" placeholder="التكلفة">
+                    <input type="text" placeholder="اسم الورشة">
+                    <input type="date" placeholder="تاريخ الصيانة">
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة</button>
+                        <button class="btn-edit">تعديل</button>
+                        <button class="btn-delete">حذف</button>
+                    </div>
+                </div>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>الشاحنة</th><th>نوع الصيانة</th><th>التكلفة</th>
+                            <th>الورشة</th><th>التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="washing" class="tab-content glass-panel">
+                <h2>الغسل والإدامة</h2>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="رقم الشاحنة">
+                    <select><option>غسل</option><option>تشحيم</option><option>فحص</option></select>
+                    <input type="text" placeholder="التكلفة">
+                    <input type="date" placeholder="التاريخ">
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة</button>
+                        <button class="btn-edit">تعديل</button>
+                        <button class="btn-delete">حذف</button>
+                    </div>
+                </div>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>الشاحنة</th><th>الخدمة</th><th>التكلفة</th><th>التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="loading" class="tab-content glass-panel">
+                <h2>معامل التحميل</h2>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="اسم المعمل">
+                    <input type="text" placeholder="الموقع">
+                    <input type="text" placeholder="رقم الهاتف">
+                    <input type="text" placeholder="نوع المواد">
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة</button>
+                    </div>
+                </div>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>اسم المعمل</th><th>الموقع</th><th>الهاتف</th><th>نوع المواد</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="unloading" class="tab-content glass-panel">
+                <h2>معامل التفريغ</h2>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="اسم الموقع">
+                    <input type="text" placeholder="الموقع">
+                    <input type="text" placeholder="نوع المواد">
+                    <input type="text" placeholder="اسم المستلم">
+                    <input type="text" placeholder="رقم الهاتف">
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة</button>
+                    </div>
+                </div>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>الموقع</th><th>نوع المواد</th><th>المستلم</th><th>الهاتف</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="scaffolds" class="tab-content glass-panel">
+                <h2>سكلات المواد الإنشائية</h2>
+                <div class="form-container glass-panel">
+                    <input type="text" placeholder="اسم السكلة">
+                    <input type="text" placeholder="نوع المادة">
+                    <input type="text" placeholder="الموقع">
+                    <input type="text" placeholder="رقم الهاتف">
+                    <input type="text" placeholder="السعر">
+                    <div class="form-buttons">
+                        <button class="btn-add">إضافة</button>
+                    </div>
+                </div>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>اسم السكلة</th><th>المادة</th><th>الموقع</th><th>الهاتف</th><th>السعر</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="reports" class="tab-content glass-panel">
+                <h2>التقارير</h2>
+                <div class="form-container glass-panel">
+                    <select>
+                        <option>تقرير الرحلات</option>
+                        <option>تقرير المصاريف</option>
+                        <option>تقرير الوقود</option>
+                        <option>تقرير الصيانة</option>
+                        <option>تقرير الأرباح</option>
+                    </select>
+                    <input type="date" placeholder="من تاريخ">
+                    <input type="date" placeholder="إلى تاريخ">
+                    <div class="form-buttons">
+                        <button class="btn-print">طباعة</button>
+                        <button class="btn-export">تصدير PDF</button>
+                    </div>
+                </div>
+            </section>
 
         </main>
+
+        <nav class="bottom-nav glass-panel">
+            <button class="nav-btn active" onclick="openTab(event, 'dashboard')"><i class="fas fa-home"></i> <span>الرئيسية</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'trucks')"><i class="fas fa-truck"></i> <span>الشاحنات</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'drivers')"><i class="fas fa-id-card"></i> <span>السائقين</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'trips')"><i class="fas fa-route"></i> <span>الرحلات</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'materials')"><i class="fas fa-cubes"></i> <span>شراء المواد</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'fuel')"><i class="fas fa-gas-pump"></i> <span>الوقود</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'maintenance')"><i class="fas fa-tools"></i> <span>الصيانة</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'washing')"><i class="fas fa-tint"></i> <span>الغسل</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'loading')"><i class="fas fa-industry"></i> <span>التحميل</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'unloading')"><i class="fas fa-map-marker-alt"></i> <span>التفريغ</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'scaffolds')"><i class="fas fa-layer-group"></i> <span>سكلات</span></button>
+            <button class="nav-btn" onclick="openTab(event, 'reports')"><i class="fas fa-chart-line"></i> <span>التقارير</span></button>
+        </nav>
     </div>
 
     <script src="script.js"></script>
