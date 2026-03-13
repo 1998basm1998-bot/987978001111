@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة شركة النقل البري</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <h2><i class="fas fa-truck-moving"></i> شركة النقل</h2>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-btn active" onclick="openTab(event, 'dashboard')"><i class="fas fa-home"></i> الرئيسية</button>
+                <button class="nav-btn" onclick="openTab(event, 'trucks')"><i class="fas fa-truck"></i> إدارة الشاحنات</button>
+                <button class="nav-btn" onclick="openTab(event, 'drivers')"><i class="fas fa-id-card"></i> إدارة السائقين</button>
+                <button class="nav-btn" onclick="openTab(event, 'trips')"><i class="fas fa-route"></i> إدارة الرحلات</button>
+                <button class="nav-btn" onclick="openTab(event, 'materials')"><i class="fas fa-cubes"></i> المواد الإنشائية</button>
+                <button class="nav-btn" onclick="openTab(event, 'fuel')"><i class="fas fa-gas-pump"></i> إدارة الكاز</button>
+                <button class="nav-btn" onclick="openTab(event, 'maintenance')"><i class="fas fa-tools"></i> الصيانة</button>
+                <button class="nav-btn" onclick="openTab(event, 'washing')"><i class="fas fa-tint"></i> الغسل والإدامة</button>
+                <button class="nav-btn" onclick="openTab(event, 'loading')"><i class="fas fa-industry"></i> معامل التحميل</button>
+                <button class="nav-btn" onclick="openTab(event, 'unloading')"><i class="fas fa-map-marker-alt"></i> معامل التفريغ</button>
+                <button class="nav-btn" onclick="openTab(event, 'scaffolds')"><i class="fas fa-layer-group"></i> سكلات المواد</button>
+                <button class="nav-btn" onclick="openTab(event, 'reports')"><i class="fas fa-chart-line"></i> التقارير</button>
+                <button class="nav-btn" onclick="openTab(event, 'settings')"><i class="fas fa-cog"></i> الإعدادات</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="dashboard" class="tab-content active glass-panel">
+                <h2>لوحة التحكم (Dashboard)</h2>
+                <div class="stats-grid">
+                    <div class="stat-card glass-panel">
+                        <h3>عدد الشاحنات</h3>
+                        <p>25</p>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <h3>عدد السائقين</h3>
+                        <p>30</p>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <h3>رحلات اليوم</h3>
+                        <p>12</p>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <h3>الإيرادات اليوم</h3>
+                        <p>5,000 $</p>
+                    </div>
+                </div>
+                <div class="chart-area glass-panel" style="margin-top: 20px; height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <p>مساحة مخصصة للرسم البياني (المصاريف والأرباح)</p>
+                </div>
+            </section>
+
+            <section id="trucks" class="tab-content glass-panel">
+                <h2>إدارة الشاحنات</h2>
+                <button class="action-btn glass-panel"><i class="fas fa-plus"></i> إضافة شاحنة جديدة</button>
+                <table class="data-table glass-panel">
+                    <thead>
+                        <tr>
+                            <th>رقم الشاحنة</th>
+                            <th>النوع</th>
+                            <th>الموديل</th>
+                            <th>السائق</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TRK-101</td>
+                            <td>مرسيدس أكتروس</td>
+                            <td>2021</td>
+                            <td>أحمد علي</td>
+                            <td><span style="color: #4CAF50;">تعمل</span></td>
+                            <td><button>تعديل</button> <button>حذف</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="drivers" class="tab-content glass-panel"><h2>إدارة السائقين</h2><p>هنا سيتم وضع جدول السائقين ومعلوماتهم.</p></section>
+            <section id="trips" class="tab-content glass-panel"><h2>إدارة الرحلات (النقل)</h2><p>هنا سيتم إدارة جميع تفاصيل الرحلات.</p></section>
+            <section id="materials" class="tab-content glass-panel"><h2>شراء المواد الإنشائية</h2><p>هنا سيتم تسجيل الرمل، الحصى، السمنت، إلخ.</p></section>
+            <section id="fuel" class="tab-content glass-panel"><h2>إدارة الكاز (الوقود)</h2><p>هنا سيتم متابعة استهلاك الوقود والمحطات.</p></section>
+            <section id="maintenance" class="tab-content glass-panel"><h2>الصيانة</h2><p>هنا سيتم تسجيل أعطال الشاحنات وورش الصيانة.</p></section>
+            <section id="washing" class="tab-content glass-panel"><h2>الغسل والإدامة</h2><p>هنا سيتم إدارة خدمات غسل وتشحيم الشاحنات.</p></section>
+            <section id="loading" class="tab-content glass-panel"><h2>معامل التحميل</h2><p>هنا سيتم إضافة معامل السمنت، الطابوق، وغيرها.</p></section>
+            <section id="unloading" class="tab-content glass-panel"><h2>معامل التفريغ</h2><p>هنا سيتم تسجيل مواقع تفريغ المواد.</p></section>
+            <section id="scaffolds" class="tab-content glass-panel"><h2>سكلات المواد الإنشائية</h2><p>هنا سيتم إدارة السكلات ومواقعها.</p></section>
+            <section id="reports" class="tab-content glass-panel"><h2>التقارير</h2><p>هنا سيتم عرض وتصدير تقارير الأرباح والمصاريف والوقود.</p></section>
+            <section id="settings" class="tab-content glass-panel"><h2>الإعدادات</h2><p>هنا سيتم وضع إعدادات النظام والمستخدمين والنسخ الاحتياطي.</p></section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
